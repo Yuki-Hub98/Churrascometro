@@ -1,0 +1,51 @@
+<!-- tailwindcss include:./css/style.css -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title> Churrascômetro </title>
+</head>
+<body>
+    <main class="flex flex-col w-full h-full items-center bg-red-50 justify-center">
+        <form action="" id="formEnvio" class="flex border rounded bg-amber-100 border-current justify-center flex-col h-96 w-96">
+            <div class="flex items-center justify-center mb-8">
+                <h1 class="font-bold">Churrascômetro </h1>
+            </div>
+            <div class="flex flex-col pl-8" id="campos">
+                <label  for="name">Name:</label>
+                <input class="border outline-none border-current rounded w-80 pl-2" required type="text" name="name" id="name">
+                <label for="email">Email:</label>
+                <input class="border outline-none border-current rounded w-80 pl-2" required type="email" oninput="VerificacaoEmail()" name="email" id="email">
+                <label for="cep">CEP:</label>
+                <abbr title="Digite CEP sem pontuaçãp (./-;)">
+                    <input class="border outline-none border-current rounded w-80 pl-2" required type="text" oninput="VerificacaoCep()" name="cep" id="cep">
+                </abbr>
+                <span id="message" class="text-red-500 hidden"></span>
+                <div class="flex flex-row gap-2">
+                    <label for="promocoes">Aceito receber e-mails com promoções:</label>
+                    <input type="checkbox" name="promocoes" id="promocoes">
+                </div>
+                <input onclick="Cadastrar()" class="border bg-red-50 hover:bg-amber-200 mt-5 border-current rounded cursor-pointer w-20" type="button" value="Cadastrar">
+            </div>
+        </form>
+        <div id="spinner"></div>
+        <div id="churrascometro" class=" hidden flex border rounded bg-amber-100 border-current items-center flex-col h-1/2 w-1/2">
+            <h1 class="font-bold">Churrascômetro </h1>
+            <form action="" id="formCalculo" class="p-10 space-y-4 bg-amber-100 flex flex-col">
+                <input placeholder="Homens" class="border outline-none border-current rounded w-40 pl-2" required type="number" name="homem" id="homem">
+                <input placeholder="Mulheres" class="border outline-none border-current rounded w-40 pl-2" required type="number" name="mulher" id="mulher">
+                <input placeholder="Crianças" class="border outline-none border-current rounded w-40 pl-2" required type="number" name="crianca" id="crianca">
+                <input placeholder="Consome Álcool" class="border outline-none border-current rounded w-40 pl-2" required type="number" name="alcool" id="alcool">
+                <input onclick="Calcular()" class="border bg-red-50 hover:bg-amber-200 mt-5 border-current rounded cursor-pointer w-20" type="button" value="Calcular">
+            </form>
+        </div>
+        <div id="result" class="hidden flex border rounded bg-amber-100 border-current justify-center items-center flex-col h-1/2 w-1/2">
+        </div>
+    </main>
+</body>
+<script src="./js/script.js"></script>
+</html>
